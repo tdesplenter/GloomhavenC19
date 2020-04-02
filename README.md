@@ -25,3 +25,9 @@ And also
 ![Unity Editor](http://i.imgur.com/4ibVJ8p.jpg)
 ![Scenario 43](http://i.imgur.com/LYlXm7p.jpg)
 ![Battle Goals](http://i.imgur.com/lkizL24.jpg)
+
+## Attribution
+
+Most sprites in this project come from the [Creator Pack](https://boardgamegeek.com/thread/1733586/files-creation) Isaac Childres, the creator of Gloomhaven, posted.
+
+As he notes in that post: These assets are shared under [creative commons license BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The basic idea is that you can use these assets for non-commercial applications with proper attribution, and any derivative work based off these assets is protected under the same license as well.
