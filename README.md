@@ -11,6 +11,10 @@ This project is very much tailored to our specific group, so to make it usable f
 * Add your group's classes to the BattleGoals GameObject in the BattleGoals scene
 * Add your own scenarios (you can start by cloning one of the existing ones)
 
+And also
+
+* Gather each player's character board, cards, tokens etc together with some bless/curse cards and enhancement stickers, and drop it off on their doorstep (or ship it) 
+
 ## Additional Tools
 
 * [Gloomhaven Helper](http://esotericsoftware.com/gloomhaven-helper) for tracking monster & player stats (and monster cards)
