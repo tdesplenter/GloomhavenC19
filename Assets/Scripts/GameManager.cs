@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
   public GameObject coinPrefab;
   public List<Monster> Monsters;
   public List<int> RevealedRooms;
+
+  public Image BigMonster;
 
   public int scenarioNumber;
 
@@ -35,6 +38,9 @@ public class GameManager : MonoBehaviour
       return;
     }
     //DontDestroyOnLoad(gameObject);
+
+    if (BigMonster != null)
+      BigMonster.gameObject.SetActive(false);
 
     // Hide all rooms
     for (int i = 0; i < rooms.Length; i++)
@@ -89,5 +95,13 @@ public class GameManager : MonoBehaviour
       killCounter++;
       KillCounterText.text = killCounter.ToString();
     }
+  }
+
+  public void ShowMonster(Monster monster)
+  {
+    var monsterNameArray = monster.sprite.name.Split('-');
+    var monsterName = monsterNameArray.Last();
+    BigMonster.sprite = Resources.Load<Sprite>($"Sprites/{monsterName}");
+    BigMonster.gameObject.SetActive(true);
   }
 }

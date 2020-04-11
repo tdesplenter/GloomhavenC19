@@ -26,6 +26,8 @@ public class Monster : MonoBehaviour, IPointerClickHandler, IDragHandler, IPoint
   {
     get
     {
+      if (this.transform.parent == null || this.transform.parent.parent == null)
+        return 0;
       return int.Parse(this.transform.parent.parent.name.Split(' ')[1]);
     }
   }
@@ -53,8 +55,7 @@ public class Monster : MonoBehaviour, IPointerClickHandler, IDragHandler, IPoint
     if (isBoss)
     {
       this.Number = 1;
-      this.GetComponentInChildren<SpriteRenderer>().transform.localScale = new Vector3(0.8f, 0.8f, 1f);
-      this.GetComponentInChildren<TextMeshProUGUI>().text = "Boss";
+      this.GetComponentInChildren<TextMeshProUGUI>().text = "";
       return;
     }
 
@@ -84,6 +85,8 @@ public class Monster : MonoBehaviour, IPointerClickHandler, IDragHandler, IPoint
   {
     if (IsSpawner)
     {
+      Debug.Log("Spawn");
+
       if (GameManager.Instance.Monsters.Count(x => !x.IsDead && x.Name == this.Name) >= maxnumber)
         return; // No monsters of this type left
 
@@ -100,8 +103,17 @@ public class Monster : MonoBehaviour, IPointerClickHandler, IDragHandler, IPoint
       return;
     }
 
+    if (eventData.button == PointerEventData.InputButton.Right)
+    {
+      Debug.Log("Right Click");
+      GameManager.Instance.ShowMonster(this);
+      return;
+    }
+
     if (eventData.clickCount >= 2)
     {
+      Debug.Log("Double Click");
+
       this.IsDead = true;
       Instantiate(GameManager.Instance.coinPrefab, currentPosition, transform.rotation, transform.parent);
 

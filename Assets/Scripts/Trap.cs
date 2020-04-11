@@ -21,7 +21,6 @@ public class Trap : MonoBehaviour, IPointerClickHandler, IDragHandler, IPointerD
 
     if (eventData.clickCount >= 2)
     {
-      Debug.Log("Double Click!");
       if (transform.parent?.GetComponent<Collider>() == null)
         Destroy(gameObject);
       else
