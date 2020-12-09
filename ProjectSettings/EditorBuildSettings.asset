@@ -15,12 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop.unity
     guid: ae2e94774444ecf428406ed08699ca02
   - enabled: 1
-    path: Assets/Scenes/Scenario 81.unity
-    guid: 923396676fdd02149bfe7b2573bbf658
+    path: Assets/Scenes/Scenario 13.unity
+    guid: 257ed9a88b49fe6489a2a0920834bc5b
+  - enabled: 1
+    path: Assets/Scenes/Scenario 17.unity
+    guid: 1ff6e28f5a1da474fa81570f88abbe4e
   - enabled: 1
     path: Assets/Scenes/Scenario 20.unity
     guid: 7f4476a0db974cf4483dce70554825b1
   - enabled: 1
-    path: Assets/Scenes/Scenario 13.unity
-    guid: 257ed9a88b49fe6489a2a0920834bc5b
+    path: Assets/Scenes/Scenario 68.unity
+    guid: ef86e16a7db190043bc7d46f7e3e23b4
   m_configObjects: {}
