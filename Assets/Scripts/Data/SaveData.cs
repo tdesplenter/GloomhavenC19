@@ -20,7 +20,6 @@ public class MonsterPosition
   public string Name;
   public int Number;
   public bool IsElite;
-  public int MaxNumber;
   public float PositionX;
   public float PositionY;
   public float PositionZ;

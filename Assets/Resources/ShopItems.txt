@@ -1,0 +1,4 @@
+[
+ { "Name": "Boots of Striding", "SpriteName": "01", "CountTotal": 2, "CountLeft": 0, "EquipSlot": 2 },
+ { "Name": "Winged Shoes", "SpriteName": "02", "CountTotal": 2, "CountLeft": 1, "EquipSlot": 2 }
+]

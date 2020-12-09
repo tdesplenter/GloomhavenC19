@@ -32,4 +32,11 @@ public class Player : MonoBehaviour
 
     DataManager.Instance.Save();
   }
+
+  void OnMouseOver()
+  {
+    if (Input.GetMouseButtonDown(1)){
+      GameManager.Instance.ShowCharacter(this);
+    }
+  }
 }

@@ -76,7 +76,7 @@ public class DataManager : MonoBehaviour
       // Add back the saved ones
       foreach (var monster in this.Monsters)
       {
-        var spawner = spawners.FirstOrDefault(x => x.Name == monster.Name && x.isElite == monster.IsElite);
+        var spawner = spawners.FirstOrDefault(x => x.MonsterName == monster.Name && x.isElite == monster.IsElite);
         if (spawner == null)
           continue;
         var newMonster = Instantiate(spawner, enemiesObject);
@@ -98,7 +98,7 @@ public class DataManager : MonoBehaviour
 
     this.RevealedRooms = GameManager.Instance.RevealedRooms.ToArray();
 
-    this.Monsters = GameManager.Instance.Monsters.Where(x => x != null && !x.IsDead).Select(x => new MonsterPosition { RoomNumber = x.RoomNumber, Name = x.Name, IsElite = x.isElite, Number = x.Number, MaxNumber = x.maxnumber, PositionX = x.transform.position.x, PositionY = x.transform.position.y, PositionZ = x.transform.position.z }).ToArray();
+    this.Monsters = GameManager.Instance.Monsters.Where(x => x != null && !x.IsDead).Select(x => new MonsterPosition { Name = x.MonsterName, IsElite = x.isElite, Number = x.Number, PositionX = x.transform.position.x, PositionY = x.transform.position.y, PositionZ = x.transform.position.z }).ToArray();
 
     this.Players = GameManager.Instance.Players.Select(x => new PlayerPosition { Name = x.Name, PositionX = x.transform.position.x, PositionY = x.transform.position.y, PositionZ = x.transform.position.z }).ToArray();
 

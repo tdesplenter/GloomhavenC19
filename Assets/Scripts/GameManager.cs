@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
   private int killCounter = 0;
   public TextMeshProUGUI KillCounterText;
 
+  public PopupMenu popupMenu;
+  public PopupMessage popupMessage;
+
   public Player[] Players
   {
     get
@@ -45,9 +48,51 @@ public class GameManager : MonoBehaviour
     // Hide all rooms
     for (int i = 0; i < rooms.Length; i++)
       rooms[i].SetActive(false);
+  }
 
-    // And then reveal only the first room
+  void Start()
+  {
+    // Reveal the first room
     RevealRoom(rooms[0]);
+
+    if (popupMenu == null)
+      Debug.LogError("Popup Menu is missing!");
+    else
+      popupMenu.gameObject.SetActive(false);
+  }
+
+  void Update()
+  {
+    if (Input.GetMouseButtonDown(2))
+    {
+      // Show Popup Menu
+      if (popupMenu != null)
+      {
+        var screenPoint = Camera.main.WorldToScreenPoint(Input.mousePosition);
+        var spawnPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+        spawnPosition.z = 1f;
+        popupMenu.Show(spawnPosition);
+      }
+    }
+
+    if (Input.GetMouseButtonUp(2))
+    {
+      // Activate Popup Menu Item (if any)
+      if (popupMenu != null)
+        popupMenu.CheckAndActivate();
+    }
+  }
+
+  public void SetActiveItem(PopupMenuItem item)
+  {
+    if (popupMenu != null)
+      popupMenu.SelectItem(item);
+  }
+
+  public void ClearPopupMenuSelection()
+  {
+    if (popupMenu != null)
+      popupMenu.ClearSelection();
   }
 
   private void AwakenMonsters(GameObject room)
@@ -57,6 +102,7 @@ public class GameManager : MonoBehaviour
       if (monster.Number > 0)
         continue; // already added
 
+      monster.Awaken();
       monster.AssignNumber();
 
       if (monster.Number == 0)
@@ -99,9 +145,20 @@ public class GameManager : MonoBehaviour
 
   public void ShowMonster(Monster monster)
   {
-    var monsterNameArray = monster.sprite.name.Split('-');
-    var monsterName = monsterNameArray.Last();
-    BigMonster.sprite = Resources.Load<Sprite>($"Sprites/{monsterName}");
+    BigMonster.sprite = Resources.Load<Sprite>($"Monsters/{monster.MonsterName}");
     BigMonster.gameObject.SetActive(true);
+  }
+
+  public void ShowCharacter(Player player)
+  {
+    var playerName = player.gameObject.GetComponentInChildren<SpriteRenderer>().sprite.name;
+    BigMonster.sprite = Resources.Load<Sprite>($"Characters/{playerName}");
+    BigMonster.gameObject.SetActive(true);
+  }
+
+  public void ShowMessage(string message)
+  {
+    if (popupMessage != null)
+      popupMessage.ShowMessage(message);
   }
 }
